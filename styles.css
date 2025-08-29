@@ -164,7 +164,7 @@ body {
 body {
   margin: 0;
   min-height: 100vh;   /* make sure body is at least full screen */
-  : flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -282,7 +282,7 @@ body {
     top: 20px;
     right: 80px;
     z-index: 2000;
-    : flex;
+    display: flex;
     align-items: center;
     gap: 10px;
     background: rgba(0, 0, 0, 0.8);
@@ -333,7 +333,7 @@ body {
 }
 
 .discord-link {
-    : inline-block;
+    display: inline-block;
     width: 45px;
     height: 45px;
     background: linear-gradient(145deg, rgba(114, 137, 218, 0.9), rgba(88, 101, 242, 0.9));
@@ -515,7 +515,7 @@ body {
 .status-indicator.offline { background-color: #747f8d; }
 
 .display-name {
-    color: #000000;
+  color: #000000;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 6px;
@@ -628,4 +628,3 @@ body {
         font-size: 15px;
     }
 }
-
