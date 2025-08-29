@@ -442,7 +442,7 @@ body {
 }
 
 .profile-container {
-    background: rgb(182, 182, 182);
+   background: rgba(184, 184, 184, 0.199);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.514);
@@ -628,3 +628,4 @@ body {
         font-size: 15px;
     }
 }
+
