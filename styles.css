@@ -1,0 +1,603 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("https://github.com/KIDDASS/HERMANOSYNMEMBER/blob/main/POKINGINA%20MO!.gif?raw=true") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+/* =================== INTRO SCREEN STYLES =================== */
+
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background: linear-gradient(135deg, #5e5e5e 0%, #1a1a1a 50%, #2c2c2c 100%);
+    cursor: pointer;
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+}
+
+.intro-screen.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+/* Logo Container */
+.logo-container {
+    position: relative;
+    margin-bottom: 80px;
+    z-index: 2;
+}
+
+.main-logo {
+    font-size: clamp(4rem, 10vw, 12rem);
+    font-weight: 900;
+    letter-spacing: clamp(4px, 1vw, 12px);
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ffffff, #f0f0f0, #ffffff, #e0e0e0);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s ease-in-out infinite, textGlow 3s ease-in-out infinite alternate;
+    position: relative;
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+}
+
+.main-logo::before {
+    content: 'HERMANO';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: sweep 3s ease-in-out infinite;
+    z-index: 1;
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 300;
+    letter-spacing: clamp(2px, 0.5vw, 6px);
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    margin-bottom: 80px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease 0.8s forwards;
+}
+
+.enter-prompt {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    opacity: 0;
+    animation: pulse 2.5s ease-in-out infinite, fadeInUp 1.5s ease 1.5s forwards;
+    position: relative;
+    padding: 20px;
+}
+
+.enter-prompt::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: expand 2.5s ease-in-out infinite;
+}
+
+/* Particle System */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.particle:nth-child(odd) {
+    animation-direction: reverse;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.particle:nth-child(3n) {
+    animation-duration: 12s;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.particle:nth-child(5n) {
+    animation-duration: 6s;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Glitch Effect */
+.glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 0, 0, 0.03) 25%, 
+        rgba(0, 255, 0, 0.03) 50%, 
+        rgba(0, 0, 255, 0.03) 75%, 
+        transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+    animation: glitchFlicker 0.3s infinite;
+}
+
+/* =================== INTRO ANIMATIONS =================== */
+
+@keyframes shimmer {
+    0% { background-position: -300% 0; }
+    50% { background-position: 300% 0; }
+    100% { background-position: -300% 0; }
+}
+
+@keyframes textGlow {
+    0% { 
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+    100% { 
+        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.6));
+        text-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+    }
+}
+
+@keyframes sweep {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes expand {
+    0%, 100% { width: 40px; opacity: 0.5; }
+    50% { width: 120px; opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) translateX(0px) rotate(0deg); 
+        opacity: 0.1;
+    }
+    25% { 
+        transform: translateY(-20px) translateX(10px) rotate(90deg); 
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateY(-10px) translateX(-5px) rotate(180deg); 
+        opacity: 0.2;
+    }
+    75% { 
+        transform: translateY(-30px) translateX(-10px) rotate(270deg); 
+        opacity: 0.4;
+    }
+}
+
+@keyframes glitchFlicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.02; }
+}
+
+/* =================== MAIN CONTENT STYLES =================== */
+
+.main-content {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+    pointer-events: none;
+    overflow-y: auto;
+    height: 100vh;
+    padding: 100px 20px 20px;
+}
+
+.main-content.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+/* Audio Controls */
+.audio-controls {
+    position: fixed;
+    top: 20px;
+    right: 80px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 15px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: all 0.5s ease;
+    transform: translateY(-20px);
+}
+
+.audio-controls.show {
+    opacity: 0;
+    transform: translateY(0);
+}
+
+.audio-toggle {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.audio-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Discord Icon */
+.discord-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    opacity: 0;
+    transition: all 0.5s ease;
+    transform: translateY(-20px);
+}
+
+.discord-icon.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.discord-link {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(145deg, rgba(114, 137, 218, 0.9), rgba(88, 101, 242, 0.9));
+    border-radius: 50%;
+    padding: 10px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 25px rgba(114, 137, 218, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+}
+
+.discord-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 35px rgba(114, 137, 218, 0.5);
+    background: linear-gradient(145deg, rgba(114, 137, 218, 1), rgba(88, 101, 242, 1));
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.discord-svg {
+    width: 100%;
+    height: 100%;
+    color: white;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.discord-link:hover .discord-svg {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+
+
+/* Pulse animation for Discord */
+.discord-link::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(114, 137, 218, 0.6), rgba(88, 101, 242, 0.6));
+    z-index: -1;
+    opacity: 0;
+    animation: discordPulse 3s infinite;
+}
+
+@keyframes discordPulse {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 1000;
+}
+.title {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 60px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.445);
+    background: linear-gradient(45deg, #ffffff, #cccccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+}
+/* =================== DISCORD MEMBERS STYLES =================== */
+
+.members-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-container {
+    background: rgb(182, 182, 182);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.514);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.664);
+}
+
+.profile-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgb(255, 0, 0);
+}
+
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(88, 101, 242, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+.profile-content {
+    position: relative;
+    z-index: 1;
+}
+
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #5865f2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(88, 101, 242, 0.5);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid rgba(47, 49, 54, 0.9);
+    background-color: #43b581;
+    transition: background-color 0.3s ease;
+}
+
+.status-indicator.online { background-color: #43b581; }
+.status-indicator.idle { background-color: #faa61a; }
+.status-indicator.dnd { background-color: #f04747; }
+.status-indicator.offline { background-color: #747f8d; }
+
+.display-name {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    word-break: break-word;
+}
+
+.username {
+    color: #b9bbbe;
+    font-size: 14px;
+    margin-top: 4px;
+    word-break: break-all;
+}
+
+
+.discriminator {
+    color: #b9bbbe;
+    font-size: 14px;
+    margin-bottom: 15px;
+    word-break: break-all;
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0.6;
+}
+
+.loading .avatar {
+    animation: profilePulse 2s infinite;
+}
+
+@keyframes profilePulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    .main-content {
+        padding: 80px 10px 20px;
+    }
+    
+    .members-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        padding: 10px;
+    }
+
+    .profile-container {
+        padding: 25px 20px;
+    }
+    
+    .avatar {
+        width: 90px;
+        height: 90px;
+    }
+
+    .status-indicator {
+        width: 20px;
+        height: 20px;
+        bottom: 4px;
+        right: 4px;
+        border-width: 2px;
+    }
+    
+    .audio-controls {
+        right: 20px;
+        top: 15px;
+        padding: 8px 12px;
+    }
+    
+    .discord-icon {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .discord-link {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .members-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .members-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .avatar {
+        width: 110px;
+        height: 110px;
+    }
+
+    .username {
+        font-size: 22px;
+    }
+
+    .discriminator {
+        font-size: 15px;
+    }
+}
