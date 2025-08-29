@@ -161,6 +161,33 @@ body {
     z-index: 3;
     animation: glitchFlicker 0.3s infinite;
 }
+body {
+  margin: 0;
+  min-height: 100vh;   /* make sure body is at least full screen */
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;     /* push footer to the very bottom */
+  background: #11111100;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+.top-left-btn {
+  position: fixed;     /* stays in place */
+  top: 10px;           /* distance from top */
+  left: 85px;          /* distance from left */
+  z-index: 1000;       /* stays above other elements */
+}
+
+.top-left-btn img {
+  width: 65px;         /* adjust size */
+  height: 65px;
+  cursor: pointer;
+}
 
 /* =================== INTRO ANIMATIONS =================== */
 
