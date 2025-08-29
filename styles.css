@@ -164,7 +164,7 @@ body {
 body {
   margin: 0;
   min-height: 100vh;   /* make sure body is at least full screen */
-  display: flex;
+  : flex;
   flex-direction: column;
 }
 
@@ -282,7 +282,7 @@ body {
     top: 20px;
     right: 80px;
     z-index: 2000;
-    display: flex;
+    : flex;
     align-items: center;
     gap: 10px;
     background: rgba(0, 0, 0, 0.8);
@@ -333,7 +333,7 @@ body {
 }
 
 .discord-link {
-    display: inline-block;
+    : inline-block;
     width: 45px;
     height: 45px;
     background: linear-gradient(145deg, rgba(114, 137, 218, 0.9), rgba(88, 101, 242, 0.9));
@@ -515,7 +515,7 @@ body {
 .status-indicator.offline { background-color: #747f8d; }
 
 .display-name {
-    color: #ffffff;
+    color: #000000;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 6px;
@@ -524,7 +524,7 @@ body {
 }
 
 .username {
-    color: #b9bbbe;
+  color: #ff0000;
     font-size: 14px;
     margin-top: 4px;
     word-break: break-all;
@@ -628,3 +628,4 @@ body {
         font-size: 15px;
     }
 }
+
